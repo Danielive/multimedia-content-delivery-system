@@ -35,30 +35,18 @@
                     </ul>
                 </menu>
 
-                <legend>Музыка</legend>
+                <legend>Видеозаписи</legend>
                 <div class="form-group">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>Трек</th>
-                                <th>Название</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:if test="${not empty allMusic}">
-                            <c:forEach var="music" items="${allMusic}">
-                            <tr>
-                                <td>
-                                    <audio width="600" height="400" controls>
-                                        <source src=${music.link} type="audio/mpeg">
-                                    </audio>
-                                </td>
-                                <td>${music.name}</td>
-                            </tr>
-                            </c:forEach>
-                            </c:if>
-                            </tbody>
-                        </table>
+                    <c:if test="${not empty allVideo}">
+                        <c:forEach var="video" items="${allVideo}">
+                            <br>
+                            <p>${video.name}</p>
+                            <video width="600" height="400" controls="controls">
+                                <source src=${video.link} type="video/mp4">
+                            </video>
+                            <br>
+                        </c:forEach>
+                    </c:if>
                 </div>
             </form>
         </div>

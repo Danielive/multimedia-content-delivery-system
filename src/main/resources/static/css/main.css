@@ -1,0 +1,5 @@
+div.container {margin-top: 30px}
+div.panel-heading {color: #004085; font-size: 200%}
+th  {font-size: large; text-align: center}
+td {font-size: 100%; text-align: center}
+select.form-control { padding: 5px; }

@@ -12,53 +12,51 @@
 <body class="registryOfProhibitedSites">
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
-            <form class="form-horizontal" action="music" method="POST">
+        <div class="col-md-12">
+            <form class="form-horizontal" action="music" method="GET">
                 <div class="panel-heading">Музыка</div>
                 <menu>
-                    <ul>
-                        <a href="http://localhost:8080/photo" class="btn btn-primary" role="button">
-                            <li>
-                                Фото
+                    <ul class="navbar nav-tabs">
+                        <a href="http://localhost:8080/photo">
+                            <li  class="btn btn-primary" role="button">
+                                Фотографии
                             </li>
                         </a>
-                        <a href="http://localhost:8080/music" class="btn btn-primary" role="button">
-                            <li>
+                        <a href="http://localhost:8080/music">
+                            <li  class="btn btn-primary" role="button">
                                 Музыка
                             </li>
                         </a>
-                        <a href="http://localhost:8080/video" class="btn btn-primary" role="button">
-                            <li>
-                                Видео
+                        <a href="http://localhost:8080/video">
+                            <li  class="btn btn-primary" role="button">
+                                Видеозаписи
                             </li>
                         </a>
                     </ul>
                 </menu>
-
-                <legend>Музыка</legend>
                 <div class="form-group">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>Трек</th>
-                                <th>Название</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:if test="${not empty allMusic}">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Трек</th>
+                            <th>Название</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:if test="${not empty allMusic}">
                             <c:forEach var="music" items="${allMusic}">
-                            <tr>
-                                <td>
-                                    <audio width="600" height="400" controls>
-                                        <source src=${music.link} type="audio/mpeg">
-                                    </audio>
-                                </td>
-                                <td>${music.name}</td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src=${music.link} type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td>${music.name}</td>
+                                </tr>
                             </c:forEach>
-                            </c:if>
-                            </tbody>
-                        </table>
+                        </c:if>
+                        </tbody>
+                    </table>
                 </div>
             </form>
         </div>

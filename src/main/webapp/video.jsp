@@ -12,38 +12,35 @@
 <body class="registryOfProhibitedSites">
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
-            <form class="form-horizontal" action="music" method="POST">
-                <div class="panel-heading">Музыка</div>
+        <div class="col-md-12">
+            <form class="form-horizontal" action="video" method="GET">
+                <div class="panel-heading">Видеозаписи</div>
                 <menu>
-                    <ul>
-                        <a href="http://localhost:8080/photo" class="btn btn-primary" role="button">
-                            <li>
-                                Фото
+                    <ul class="navbar nav-tabs">
+                        <a href="http://localhost:8080/photo">
+                            <li  class="btn btn-primary" role="button">
+                                Фотографии
                             </li>
                         </a>
-                        <a href="http://localhost:8080/music" class="btn btn-primary" role="button">
-                            <li>
+                        <a href="http://localhost:8080/music">
+                            <li  class="btn btn-primary" role="button">
                                 Музыка
                             </li>
                         </a>
-                        <a href="http://localhost:8080/video" class="btn btn-primary" role="button">
-                            <li>
-                                Видео
+                        <a href="http://localhost:8080/video">
+                            <li  class="btn btn-primary" role="button">
+                                Видеозаписи
                             </li>
                         </a>
                     </ul>
                 </menu>
-
-                <legend>Видеозаписи</legend>
                 <div class="form-group">
                     <c:if test="${not empty allVideo}">
                         <c:forEach var="video" items="${allVideo}">
                             <br>
-                            <p>${video.name}</p>
-                            <video width="600" height="400" controls="controls">
-                                <source src=${video.link} type="video/mp4">
-                            </video>
+                            <h5 align="center">${video.name}</h5>
+                            <p align="center"><video class="vid" width="600" height="400" controls="controls">
+                                <source src=${video.link} type="video/mp4"></video></p>
                             <br>
                         </c:forEach>
                     </c:if>

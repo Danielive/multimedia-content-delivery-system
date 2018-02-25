@@ -12,38 +12,34 @@
 <body class="registryOfProhibitedSites">
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
-            <form class="form-horizontal" action="music" method="POST">
-                <div class="panel-heading">Музыка</div>
+        <div class="col-md-12">
+            <form class="form-horizontal" action="photo" method="GET">
+                <div class="panel-heading">Фотографии</div>
                 <menu>
-                    <ul>
-                        <a href="http://localhost:8080/photo" class="btn btn-primary" role="button">
-                            <li>
-                                Фото
+                    <ul class="navbar nav-tabs">
+                        <a href="http://localhost:8080/photo">
+                            <li  class="btn btn-primary" role="button">
+                                Фотографии
                             </li>
                         </a>
-                        <a href="http://localhost:8080/music" class="btn btn-primary" role="button">
-                            <li>
+                        <a href="http://localhost:8080/music">
+                            <li  class="btn btn-primary" role="button">
                                 Музыка
                             </li>
                         </a>
-                        <a href="http://localhost:8080/video" class="btn btn-primary" role="button">
-                            <li>
-                                Видео
+                        <a href="http://localhost:8080/video">
+                            <li  class="btn btn-primary" role="button">
+                                Видеозаписи
                             </li>
                         </a>
                     </ul>
                 </menu>
-
-                <legend>Фотографии</legend>
                 <div class="form-group">
                     <c:if test="${not empty allPhoto}">
                         <c:forEach var="photo" items="${allPhoto}">
                             <br>
-                            <p>${photo.name}</p>
-                            <img src=${photo.link}
-                                         <%--width="768" height="600"--%>
-                            >
+                            <h5 align="center">${photo.name}</h5>
+                            <p align="center"><img src=${photo.link}></p>
                             <br>
                         </c:forEach>
                     </c:if>

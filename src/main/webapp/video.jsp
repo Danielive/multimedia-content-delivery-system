@@ -15,8 +15,9 @@
         <div class="col-md-12">
             <form class="form-horizontal" action="video" method="GET">
                 <div class="panel-heading">Видеозаписи</div>
+                <hr>
                 <menu>
-                    <ul class="navbar nav-tabs">
+                    <ul class="navbar nav">
                         <a href="http://localhost:8080/photo">
                             <li  class="btn btn-primary" role="button">
                                 Фотографии
@@ -34,6 +35,7 @@
                         </a>
                     </ul>
                 </menu>
+                <hr>
                 <div class="form-group">
                     <c:if test="${not empty allVideo}">
                         <c:forEach var="video" items="${allVideo}">

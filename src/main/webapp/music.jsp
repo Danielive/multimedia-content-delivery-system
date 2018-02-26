@@ -15,8 +15,9 @@
         <div class="col-md-12">
             <form class="form-horizontal" action="music" method="GET">
                 <div class="panel-heading">Музыка</div>
+                <hr>
                 <menu>
-                    <ul class="navbar nav-tabs">
+                    <ul class="navbar nav">
                         <a href="http://localhost:8080/photo">
                             <li  class="btn btn-primary" role="button">
                                 Фотографии
@@ -34,6 +35,7 @@
                         </a>
                     </ul>
                 </menu>
+                <hr>
                 <div class="form-group">
                     <table class="table table-striped">
                         <thead>

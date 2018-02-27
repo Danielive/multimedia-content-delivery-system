@@ -18,9 +18,12 @@ public class Photo {
     @Column(name = "link")
     private String link;
 
+    @Column(name = "type")
+    private String type;
+
     @Override
     public String toString() {
-        return "{" + "\"id\":" + id + ",\"name\":\"" + name + "\",\"link\":\"" + link + "\"}";
+        return "{" + "\"id\":" + id + ",\"name\":\"" + name + "\",\"link\":\"" + link + "\",\"type\":\"" + type + "\"}";
     }
 
     public Photo() {}
@@ -30,10 +33,11 @@ public class Photo {
         this.link = link;
     }
 
-    public Photo(long id, String name, String link) {
+    public Photo(long id, String name, String link, String type) {
         this.id = id;
         this.name = name;
         this.link = link;
+        this.type = type;
     }
 
     public long getId() {
@@ -43,6 +47,14 @@ public class Photo {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {

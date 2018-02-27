@@ -17,17 +17,30 @@ import java.util.List;
 @Service
 public class WebService {
     @Autowired
+    private PhotoRepository pRepository;
+    @Autowired
     private MusicRepository mRepository;
     @Autowired
     private VideoRepository vRepository;
-    @Autowired
-    private PhotoRepository pRepository;
+
+    public String findAllPhoto() {
+        return pRepository.findAll().toString();
+    }
+    public String findAllNamePhoto(String name) {
+        return pRepository.findAllByName(name).toString();
+    }
+    public void addPhoto(String name, String link) {
+        pRepository.save(new Photo(name, link));
+    }
+    public void delPhoto(Long id) {
+        pRepository.delete(id);
+    }
 
     public String findAllMusic() {
         return mRepository.findAll().toString();
     }
-    public List<Music> findAllLinkMusic(String link) {
-        return mRepository.findAllByLink(link);
+    public String findAllNameMusic(String name) {
+        return mRepository.findAllByName(name).toString();
     }
     public void addMusic(String name, String link) {
         mRepository.save(new Music(name, link));
@@ -39,26 +52,13 @@ public class WebService {
     public String findAllVideo() {
         return vRepository.findAll().toString();
     }
-    public List<Video> findAllLinkVideo(String link) {
-        return vRepository.findAllByLink(link);
+    public String findAllNameVideo(String name) {
+        return vRepository.findAllByName(name).toString();
     }
     public void addVideo(String name, String link) {
         vRepository.save(new Video(name, link));
     }
     public void delVideo(Long id) {
         vRepository.delete(id);
-    }
-
-    public String findAllPhoto() {
-        return pRepository.findAll().toString();
-    }
-    public List<Photo> findAllLinkPhoto(String link) {
-        return pRepository.findAllByLink(link);
-    }
-    public void addPhoto(String name, String link) {
-        pRepository.save(new Photo(name, link));
-    }
-    public void delPhoto(Long id) {
-        pRepository.delete(id);
     }
 }

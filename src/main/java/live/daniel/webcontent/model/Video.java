@@ -18,9 +18,12 @@ public class Video {
     @Column(name = "link")
     private String link;
 
+    @Column(name = "type")
+    private String type;
+
     @Override
     public String toString() {
-        return "{" + "\"id\":" + id + ",\"name\":\"" + name + "\",\"link\":\"" + link + "\"}";
+        return "{" + "\"id\":" + id + ",\"name\":\"" + name + "\",\"link\":\"" + link + "\",\"type\":\"" + type + "\"}";
     }
 
     public Video() {}
@@ -30,10 +33,19 @@ public class Video {
         this.link = link;
     }
 
-    public Video(long id, String name, String link) {
+    public Video(long id, String name, String link, String type) {
         this.id = id;
         this.name = name;
         this.link = link;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public long getId() {

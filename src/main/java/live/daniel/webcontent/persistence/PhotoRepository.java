@@ -9,5 +9,5 @@ import java.util.List;
  * Created by Daniel on 29.09.2017.
  */
 public interface PhotoRepository extends CrudRepository<Photo, Long> {
-    List<Photo> findAllByLink(String link);
+    List<Photo> findAllByName(String name);
 }

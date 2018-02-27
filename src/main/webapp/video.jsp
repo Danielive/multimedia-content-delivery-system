@@ -33,6 +33,11 @@
                                 Видеозаписи
                             </li>
                         </a>
+                        <a href="http://localhost:8080/find">
+                            <li  class="btn btn-info" role="button">
+                                Поиск
+                            </li>
+                        </a>
                     </ul>
                 </menu>
                 <hr>

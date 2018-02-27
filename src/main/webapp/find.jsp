@@ -13,8 +13,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form class="form-horizontal" action="photo" method="GET">
-                <div class="panel-heading">Фотографии</div>
+            <form class="form-horizontal" action="find" method="POST">
+                <div class="panel-heading">Поиск</div>
                 <hr>
                 <menu>
                     <ul class="navbar nav">
@@ -42,13 +42,39 @@
                 </menu>
                 <hr>
                 <div class="form-group">
-                    <c:if test="${not empty allPhoto}">
-                        <c:forEach var="photo" items="${allPhoto}">
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="find" placeholder="Поиск">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-4">
+                        <button class="btn btn-default">Найти</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <c:if test="${not empty allFiles}">
+                        <c:forEach var="file" items="${allFiles}">
                             <br>
-                            <h5 align="center">${photo.name}</h5>
-                            <p align="center"><img src=${photo.link}></p>
+                            <h5 align="center">${file.name}</h5>
+                            <c:choose>
+                                <c:when test="${file.type == 0}">
+                                    <p align="center"><img src=${file.link}></p>
+                                </c:when>
+                                <c:when test="${file.type == 1}">
+                                    <p align="center"><audio controls>
+                                        <source src=${file.link} type="audio/mpeg"></audio></p>
+                                </c:when>
+                                <c:when test="${file.type == 2}">
+                                    <p align="center"><video class="vid" width="600" height="400" controls="controls">
+                                        <source src=${file.link} type="video/mp4"></video></p>
+                                </c:when>
+                            </c:choose>
                             <br>
                         </c:forEach>
+                    </c:if>
+                    <c:if test="${empty allFiles}">
+                        <p class="other" align="center">Не найдено</p>
                     </c:if>
                 </div>
             </form>

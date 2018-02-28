@@ -37,22 +37,18 @@ public class WebController {
 //        return "registry";
 //    }
 
-    private String strFind = "";
-
     // Find
     @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public ModelAndView getFindByName() {
+    public ModelAndView getFindByName(String nameReq) {
         ModelAndView model = new ModelAndView("find");
         List<Photo> pList = new ArrayList<>();
         List<Music> mList = new ArrayList<>();
         List<Video> vList = new ArrayList<>();
         List<Object> list = new ArrayList<>();
 
-        strFind = "";
-
-        String strJsonP = service.findAllNamePhoto(strFind);
-        String strJsonM = service.findAllNameMusic(strFind);
-        String strJsonV = service.findAllNameVideo(strFind);
+        String strJsonP = service.findAllNamePhoto(nameReq);
+        String strJsonM = service.findAllNameMusic(nameReq);
+        String strJsonV = service.findAllNameVideo(nameReq);
 
         JSONObject dataJsonObj;
         String link;
@@ -131,9 +127,8 @@ public class WebController {
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.POST)
-    public String postFindByName(@RequestParam(value = "name") String name) {
-        strFind = name;
-        return "find";
+    public ModelAndView postFindByName(@RequestParam(value = "name") String name) {
+        return getFindByName(name);
     }
 
     // Photos

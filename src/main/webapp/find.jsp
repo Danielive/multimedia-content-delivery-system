@@ -43,7 +43,7 @@
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="find" placeholder="Поиск">
+                        <input type="text" class="form-control" id="find" name="name" placeholder="Поиск">
                     </div>
                 </div>
                 <div class="form-group">
@@ -72,9 +72,6 @@
                             </c:choose>
                             <br>
                         </c:forEach>
-                    </c:if>
-                    <c:if test="${empty allFiles}">
-                        <p class="other" align="center">Не найдено</p>
                     </c:if>
                 </div>
             </form>

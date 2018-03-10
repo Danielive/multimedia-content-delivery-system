@@ -26,17 +26,6 @@ public class WebController {
     @Autowired
     private WebService service;
 
-//    @RequestMapping("/add")
-//    public void addSite(@RequestParam("link") String link, @RequestParam("ip") String ip, @RequestParam("date") String date){
-//        // service.addSite(link, ip, date);
-//    }
-//
-//    @RequestMapping(value="/deletesite", method = RequestMethod.POST)
-//    public String postDelete(@RequestParam String id) {
-//        service.delSite(Long.valueOf(id));
-//        return "registry";
-//    }
-
     // Find
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ModelAndView getFindByName(String nameReq) {

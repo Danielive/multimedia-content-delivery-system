@@ -12,10 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Daniel on 29.09.2017.
@@ -38,21 +35,23 @@ public class WebController {
         List<Music> mList = new ArrayList<>();
         List<Video> vList = new ArrayList<>();
         List<Object> list = new ArrayList<>();
+        String strJsonP;
+        String strJsonM;
+        String strJsonV;
 
-        String strJsonP = service.findAllNamePhoto(nameReq);
-        String strJsonM = service.findAllNameMusic(nameReq);
-        String strJsonV = service.findAllNameVideo(nameReq);
+        if ((nameReq != null) && (!nameReq.isEmpty())) {
+            strJsonP = service.findAllPhoto();
+            strJsonM = service.findAllMusic();
+            strJsonV = service.findAllVideo();
 
-        strJsonP = strJsonP.replace("[", "{\"photo\":[");
-        strJsonP = strJsonP.replace("]", "]}");
-        strJsonM = strJsonM.replace("[", "{\"music\":[");
-        strJsonM = strJsonM.replace("]", "]}");
-        strJsonV = strJsonV.replace("[", "{\"video\":[");
-        strJsonV = strJsonV.replace("]", "]}");
+            strJsonP = finder(strJsonP, nameReq, "photo");
+            strJsonM = finder(strJsonM, nameReq, "music");
+            strJsonV = finder(strJsonV, nameReq, "video");
 
-        findContent("photo", strJsonP, pList);
-        findContent("music", strJsonM, mList);
-        findContent("video", strJsonV, vList);
+            findContent("photo", strJsonP, pList);
+            findContent("music", strJsonM, mList);
+            findContent("video", strJsonV, vList);
+        }
 
         if (!pList.isEmpty())
             list.addAll(pList);
@@ -72,6 +71,50 @@ public class WebController {
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public ModelAndView postFindByName(@RequestParam(value = "name") String name) {
         return getFindByName(name);
+    }
+
+    private String finder(String str, String reqStr, String type) {
+        Map<String, Object> mapContent;
+        String valueJson;
+        String contentJson = "";
+        int sizeBuf;
+        boolean find;
+
+        String strJson = str;
+
+        strJson = strJson.replace("[", "");
+        strJson = strJson.replace("]", "");
+        strJson = strJson.replace("\"}, ", "\"},");
+        strJson = strJson.concat(" ");
+
+        while (!strJson.isEmpty()) {
+            JSONObject jsonObject = new JSONObject(strJson);
+            mapContent = jsonToMap(jsonObject);
+            valueJson = JSONObject.valueToString(mapContent);
+            sizeBuf = valueJson.length();
+            find = false;
+
+            if (reqStr == null) reqStr = "";
+
+            for (Map.Entry entry : mapContent.entrySet()) {
+                if (entry.getKey().equals("name"))
+                    if (findInString(entry.getValue().toString(), reqStr))
+                        find = true;
+            }
+
+            if (find) {
+                if (!contentJson.equals("")) contentJson = contentJson.concat(",");
+                contentJson = contentJson.concat(valueJson);
+            }
+
+            strJson = strJson.substring(sizeBuf + 1);
+        }
+
+        contentJson = "[" + contentJson + "]";
+        contentJson = contentJson.replace("[", "{\"" + type + "\":[");
+        contentJson = contentJson.replace("]", "]}");
+
+        return contentJson;
     }
 
     private void findContent(String content, String strJson, List list) {
@@ -94,6 +137,57 @@ public class WebController {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private static Map<String, Object> jsonToMap(JSONObject json) throws JSONException {
+        Map<String, Object> retMap = new HashMap<>();
+
+        if(json != JSONObject.NULL) {
+            retMap = toMap(json);
+        }
+        return retMap;
+    }
+
+    private static Map<String, Object> toMap(JSONObject object) throws JSONException {
+        Map<String, Object> map = new HashMap<>();
+
+        Iterator<String> keysItr = object.keys();
+        while(keysItr.hasNext()) {
+            String key = keysItr.next();
+            Object value = object.get(key);
+
+            if(value instanceof JSONArray) {
+                value = toList((JSONArray) value);
+            }
+
+            else if(value instanceof JSONObject) {
+                value = toMap((JSONObject) value);
+            }
+            map.put(key, value);
+        }
+        return map;
+    }
+
+    private static List<Object> toList(JSONArray array) throws JSONException {
+        List<Object> list = new ArrayList<>();
+        for(int i = 0; i < array.length(); i++) {
+            Object value = array.get(i);
+            if(value instanceof JSONArray) {
+                value = toList((JSONArray) value);
+            }
+
+            else if(value instanceof JSONObject) {
+                value = toMap((JSONObject) value);
+            }
+            list.add(value);
+        }
+        return list;
+    }
+
+    private boolean findInString(String str, String strIn) {
+        str = str.toLowerCase();
+        strIn = strIn.toLowerCase();
+        return str.matches("(.*)" + strIn + "(.*)");
     }
 
     // Photos

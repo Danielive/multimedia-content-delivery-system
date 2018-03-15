@@ -8,13 +8,13 @@
 ## Screen pages
 
 ### Photo
-<img src="https://pp.userapi.com/c834202/v834202164/af7c7/2rHK0AdPchg.jpg" width="700" height="400"/>
+<img src="https://camo.githubusercontent.com/6c679b0e4b539a648c544aa10ae14a2a6fc7beaa/68747470733a2f2f70702e757365726170692e636f6d2f633833343230322f763833343230323136342f61663763372f3272484b304164506368672e6a7067" width="500" height="300" align="center"/>
 
 ### Music
-<img src="https://pp.userapi.com/c834202/v834202164/af7d4/n3uKEAxCIQU.jpg" width="700" height="400"/>
+<img src="https://camo.githubusercontent.com/a5bf6bf0009783a1d32af126878990afbb326c59/68747470733a2f2f70702e757365726170692e636f6d2f633833343230322f763833343230323136342f61663764342f6e33754b454178434951552e6a7067" width="500" height="300" align="center"/>
 
 ### Video
-<img src="https://pp.userapi.com/c834202/v834202164/af7dd/gMD_HCdrowE.jpg" width="700" height="400"/>
+<img src="https://camo.githubusercontent.com/eb14c9dbd0bda0025e16c4e325ad762f98cd383b/68747470733a2f2f70702e757365726170692e636f6d2f633833343230322f763833343230323136342f61663764642f674d445f484364726f77452e6a7067" width="500" height="300" align="center"/>
 
 ### Find
-<img src="https://pp.userapi.com/c834202/v834202164/af7e6/iU0lAUK_jjE.jpg" width="700" height="400"/>
+<img src="https://camo.githubusercontent.com/b46b5182f91ab8a8fc4c161193e7396b7445c0bf/68747470733a2f2f70702e757365726170692e636f6d2f633833343230322f763833343230323136342f61663765362f6955306c41554b5f6a6a452e6a7067" width="500" height="300 align="center""/>

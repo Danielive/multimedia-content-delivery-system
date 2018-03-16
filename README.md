@@ -1,5 +1,12 @@
 # Multimedia content delivery system
 
+## Description
+Web application has created with used:
+- Spring boot / data JPA 
+- PostgreSQL
+- JSP with JSTL
+- JSON
+
 ## Content type
 - Photo
 - Music
